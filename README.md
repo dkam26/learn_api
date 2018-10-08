@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/dkam26/learn_api.svg?style=svg)](https://circleci.com/gh/dkam26/learn_api)
+[![CircleCI](https://circleci.com/gh/dkam26/ul_api.svg?style=svg)](https://circleci.com/gh/dkam26/ul_api)
 
 # U-Learm
 U-leaarn is an app that is  one stop center for all your learning tutorials

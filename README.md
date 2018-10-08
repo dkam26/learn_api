@@ -1,1 +1,1 @@
-# u_learn_api
+[![CircleCI](https://circleci.com/gh/dkam26/u_learn_api.svg?style=svg)]

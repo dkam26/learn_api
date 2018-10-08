@@ -1,5 +1,5 @@
 {
-  "name": "u_learn_api",
+  "name": "ul_api",
   "version": "1.0.0",
   "description": "Api for the U-learn platform",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dkam26/u_learn_api.git"
+    "url": "git+https://github.com/dkam26/ul_api.git"
   },
   "author": "Deo Kamara",
   "license": "ISC",
@@ -36,9 +36,9 @@
     "uuid": "^3.3.2"
   },
   "bugs": {
-    "url": "https://github.com/dkam26/u_learn_api/issues"
+    "url": "https://github.com/dkam26/ul_api/issues"
   },
-  "homepage": "https://github.com/dkam26/u_learn_api#readme",
+  "homepage": "https://github.com/dkam26/ul_api#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",

@@ -1,1 +1,1 @@
-[![CircleCI](https://circleci.com/gh/dkam26/u_learn_api.svg?style=svg)]
+![CircleCI](https://circleci.com/gh/dkam26/u_learn_api.svg?style=svg)

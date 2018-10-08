@@ -1,4 +1,6 @@
-[![CircleCI](https://circleci.com/gh/dkam26/learn_api.svg?style=svg)](https://circleci.com/gh/dkam26/learn_api)
+[![CircleCI](https://circleci.com/gh/dkam26/ul_api.svg?style=svg)](https://circleci.com/gh/dkam26/ul_api)
+
+[![Coverage Status](https://coveralls.io/repos/github/dkam26/ul_api/badge.svg?branch=develop)](https://coveralls.io/github/dkam26/ul_api?branch=develop)
 
 # U-Learn
 U-leaarn is an app that is  one stop center for all your learning tutorials

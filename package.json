@@ -26,6 +26,7 @@
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
     "fs.realpath": "^1.0.0",
+    "has-flag": "^3.0.0",
     "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
     "mocha-coveralls-reporter": "0.0.5",

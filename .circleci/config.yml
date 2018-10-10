@@ -37,4 +37,3 @@ jobs:
       # run tests!
 
       - run: npm test
-      - run: nyc report --reporter=text-lcov | coveralls

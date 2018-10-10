@@ -1,19 +1,16 @@
 {
-  "name": "ul_api",
+  "name": "express-api-shoppinglist",
   "version": "1.0.0",
-  "description": "Api for the U-learn platform",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "nyc mocha ",
-    "coverage": " nyc report --reporter=text-lcov |   coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon app.js --exec babel-node --presets es2015,stage-2",
     "build": "babel lib -d dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dkam26/ul_api.git"
-  },
-  "author": "Deo Kamara",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "blanket": "^1.2.3",
@@ -25,8 +22,6 @@
     "express": "^4.13.4",
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
-    "fs.realpath": "^1.0.0",
-    "has-flag": "^3.0.0",
     "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
     "mocha-coveralls-reporter": "0.0.5",
@@ -37,10 +32,6 @@
     "save": "^2.3.2",
     "uuid": "^3.3.2"
   },
-  "bugs": {
-    "url": "https://github.com/dkam26/ul_api/issues"
-  },
-  "homepage": "https://github.com/dkam26/ul_api#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",

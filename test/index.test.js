@@ -1,3 +1,4 @@
+import User from '../api/models/user.model';
 test('Trial', () => {
-  expect(true).toBe(true);
+  expect(typeof(User)).toBe('function');
 });

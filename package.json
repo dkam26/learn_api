@@ -1,17 +1,17 @@
 {
-  "name": "u_learn_api",
+  "name": "ul_api",
   "version": "1.0.0",
   "description": "Api for the U-learn platform",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "nyc mocha --compilers js:babel-core/register --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "start": "nodemon app.js --exec babel-node --presets es2015,stage-2",
     "build": "babel lib -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dkam26/u_learn_api.git"
+    "url": "git+https://github.com/dkam26/ul_api.git"
   },
   "author": "Deo Kamara",
   "license": "ISC",
@@ -25,6 +25,9 @@
     "express": "^4.13.4",
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
+    "fs.realpath": "^1.0.0",
+    "has-flag": "^3.0.0",
+    "jest-cli": "^23.6.0",
     "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
     "mocha-coveralls-reporter": "0.0.5",
@@ -36,15 +39,17 @@
     "uuid": "^3.3.2"
   },
   "bugs": {
-    "url": "https://github.com/dkam26/u_learn_api/issues"
+    "url": "https://github.com/dkam26/ul_api/issues"
   },
-  "homepage": "https://github.com/dkam26/u_learn_api#readme",
+  "homepage": "https://github.com/dkam26/ul_api#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
@@ -55,8 +60,11 @@
     "eslint-config-google": "^0.10.0",
     "gulp-babel": "^8.0.0",
     "istanbul": "^0.4.5",
+    "jest": "^23.6.0",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.0.1",
+    "regenerator-runtime": "^0.12.1",
+    "request": "^2.88.0",
     "supertest": "^3.3.0"
   }
 }

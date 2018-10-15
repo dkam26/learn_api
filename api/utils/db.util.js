@@ -1,10 +1,19 @@
 import User from '../models/user.model';
 import jwt from 'jsonwebtoken';
+
 const createUser = ( data) => {
   return new Promise((resolve, reject) => {
-    const user = new User(data);
-    user.save();
-    return resolve(data.username);
+    User.find({'username': data.username}, (err, users) =>{
+      if (users.length > 0) {
+        return reject(
+            `User already exists, ${data.username }`
+        );
+      } else {
+        const user = new User(data);
+        user.save();
+        return resolve(data.username);
+      }
+    });
   });
 };
 const authLogin = (data) => {

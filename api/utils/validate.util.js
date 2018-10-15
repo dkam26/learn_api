@@ -14,4 +14,5 @@ const vadilateUser = (functionality, user) => {
     return resolve(true);
   });
 };
+
 export default vadilateUser;

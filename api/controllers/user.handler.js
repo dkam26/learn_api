@@ -1,6 +1,9 @@
 import vadilateUser from '../utils/validate.util';
-import createUser from '../utils/db.util';
-import {responseCreate, responseError} from '../utils/response.util';
+import {createUser, authLogin} from '../utils/db.util';
+import {responseCreate,
+  responseError,
+  responseLogin,
+  responseLoginError} from '../utils/response.util';
 /**
  * Handles user functionality.
  */
@@ -12,7 +15,7 @@ class UserController {
  */
   static create(req, res) {
     const user = req.body;
-    return vadilateUser(user)
+    return vadilateUser('createUser', user)
         .then(() => createUser(user)
             .then((username) => {
               responseCreate(res, username);
@@ -28,7 +31,15 @@ class UserController {
  */
   static login(req, res) {
     const user = req.body;
-    return user;
+    return vadilateUser('login', user)
+        .then(()=> authLogin(user)
+        .then((creditials) => {
+          responseLogin(res, creditials);
+        })
+        .catch((err) =>{
+          responseLoginError(res, err);
+          // responseError(res, err);
+        }))
   }
 }
 

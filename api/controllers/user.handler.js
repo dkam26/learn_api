@@ -33,13 +33,12 @@ class UserController {
     const user = req.body;
     return vadilateUser('login', user)
         .then(()=> authLogin(user)
-        .then((creditials) => {
-          responseLogin(res, creditials);
-        })
-        .catch((err) =>{
-          responseLoginError(res, err);
-          // responseError(res, err);
-        }))
+            .then((creditials) => {
+              responseLogin(res, creditials);
+            })
+            .catch((err) =>{
+              responseLoginError(res, err);
+            }));
   }
 }
 

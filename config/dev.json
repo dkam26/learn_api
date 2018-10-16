@@ -1,5 +1,4 @@
 
 {
-    "DBHost": "mongodb://localhost:27017/u_learn_db",
-    "PORT": 3000
+    "DBHost": "mongodb://localhost:27017/u_learn_db"
 }

@@ -4,8 +4,8 @@
   "description": "Api for the U-learn platform",
   "main": "server.js",
   "scripts": {
-    "test": "jest --forceExit",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | npm run coveralls",
+    "test": "export NODE_ENV=test && export DATABASE_URL=mongodb://localhost/test_db && nyc mocha --compilers js:babel-core/register --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon api/server.js --exec babel-node --presets es2015,stage-2",
     "build": "babel lib -d dist"
   },
@@ -27,13 +27,15 @@
     "express-session": "^1.15.6",
     "fs.realpath": "^1.0.0",
     "has-flag": "^3.0.0",
+    "http-shutdown": "^1.2.0",
     "jest-cli": "^23.6.0",
     "jsonwebtoken": "^8.3.0",
+    "kill-port": "^1.3.2",
     "mocha": "^5.2.0",
     "mocha-coveralls-reporter": "0.0.5",
-    "mongoose": "^4.4.20",
+    "mongoose": "^5.2.17",
     "mongoose-type-email": "^1.0.9",
-    "morgan": "^1.7.0",
+    "morgan": "^1.9.1",
     "run": "^1.4.0",
     "save": "^2.3.2",
     "uuid": "^3.3.2"
@@ -66,5 +68,12 @@
     "regenerator-runtime": "^0.12.1",
     "request": "^2.88.0",
     "supertest": "^3.3.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
   }
 }

@@ -11,7 +11,8 @@ app.use(morgan('dev'));
 
 
 const mongoose = require('mongoose');
-mongoose.connect(config.DBHost);
+mongoose.connect(config.DBHost,
+    {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', function(err) {
   console.error('connection error: ', err);

@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 import config from 'config';
 import userRoutes from './routes/user.route';
-
+import searchRoutes from './routes/search.route';
 const jsonParser = require('body-parser').json;
 const morgan = require('morgan');
 
@@ -29,6 +29,7 @@ if (config.util.getEnv('NODE_ENV') !== 'test') {
 
 app.use('/ul', userRoutes);
 
+app.use('/ul', searchRoutes);
 // 404 error handler
 app.use((req, res, next) =>{
   const err = new Error('Not found');

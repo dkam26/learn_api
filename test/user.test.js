@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
@@ -14,7 +14,7 @@ const user ={
 };
 chai.use(chaiHttp);
 
-describe('ulearnApp', () => {
+describe('MeteoApp', () => {
   before((done) =>{
     User.remove({}, (err) => {
     });
@@ -53,15 +53,12 @@ describe('ulearnApp', () => {
     });
   });
   describe('/POST login', () => {
-    let token ='';
     it('it should POST  login', (done) => {
       chai.request(Server)
           .post('/ul/login')
           .send({'username': user.username, 'password': user.password})
           .end((err, res) =>{
             expect(res.status).to.equal(201);
-            token = res.body.token;
-
             done();
           });
     });

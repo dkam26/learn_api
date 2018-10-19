@@ -17,6 +17,7 @@ const responseLoginError = (res, data) =>{
   res.status(401)
       .json(data);
 };
+
 module.exports = {
   responseCreate: responseCreate,
   responseError: responseError,

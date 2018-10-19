@@ -4,6 +4,7 @@ const router = new express.Router();
 
 
 router
-    .post('/search', SearchController.getCoordinates);
+    .post('/search', SearchController.getCoordinates)
+    .post('/getWeather', SearchController.getForecast);
 
 export default router;

@@ -1,5 +1,6 @@
 import User from '../models/user.model';
 import jwt from 'jsonwebtoken';
+import Data from '../models/data.model';
 
 const createUser = ( data) => {
   return new Promise((resolve, reject) => {
@@ -32,9 +33,17 @@ const authLogin = (data) => {
     });
   });
 };
+const storeData = (data) => {
+  return new Promise((resolve, reject) =>{
+    const dataToSave = new Data();
+    dataToSave.save();
+    return resolve({Message: 'Saved!'});
+  });
+};
 module.exports = {
   createUser: createUser,
   authLogin: authLogin,
+  storeData: storeData,
 };
 
 

@@ -18,11 +18,16 @@ const responseLoginError = (res, data) =>{
       .json(data);
 };
 
+const responseData = (res, data) =>{
+  res.status(201)
+      .json(data);
+};
 module.exports = {
   responseCreate: responseCreate,
   responseError: responseError,
   responseLogin: responseLogin,
   responseLoginError: responseLoginError,
+  responseData: responseData,
 };
 
 

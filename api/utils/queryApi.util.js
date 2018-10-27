@@ -19,7 +19,7 @@ const getLocation = (data) => {
 
 const getWeather = (time, data) => {
   return new Promise((resolve, reject) =>{
-    request(`https://api.darksky.net/forecast/4291d3bded0ec0f06a1d15eca0668f1a/${data.lat},${data.lng},${time}`,
+    request(`https://api.darksky.net/forecast/4291d3bded0ec0f06a1d15eca0668f1a/${data.lat},${data.lng},${time}?exclude=currently,hourly,flags`,
         {json: true},
         (res, body) =>{
           return resolve( body['body']);

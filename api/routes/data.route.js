@@ -4,6 +4,7 @@ const router = new express.Router();
 
 
 router
-    .post('/data', DataController.saveData);
+    .post('/data', DataController.saveData)
+    .get('/querydata', DataController.queryData);
 
 export default router;

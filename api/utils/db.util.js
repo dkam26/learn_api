@@ -33,17 +33,32 @@ const authLogin = (data) => {
     });
   });
 };
-const storeData = (data) => {
+const storeData = (data, token) => {
   return new Promise((resolve, reject) =>{
-    const dataToSave = new Data();
-    dataToSave.save();
-    return resolve({Message: 'Saved!'});
+    jwt.verify(token, 'super', function(err, decoded) {
+      User.findOne({'_id': decoded.id}, (err, user) =>{
+        data['owner'] = user._id;
+        const dataToSave = new Data(data);
+        dataToSave.save();
+        return resolve({Message: 'Saved!'});
+      });
+    });
+  });
+};
+const query = (token) => {
+  return new Promise((resolve, reject) =>{
+    jwt.verify(token, 'super', function(err, decoded) {
+      User.findOne({'_id': decoded.id}, (err, user) =>{
+        Data.find({'owner': user['_id']}, (err, list) =>{
+          return resolve(list);
+        });
+      });
+    });
   });
 };
 module.exports = {
   createUser: createUser,
   authLogin: authLogin,
   storeData: storeData,
+  query: query,
 };
-
-

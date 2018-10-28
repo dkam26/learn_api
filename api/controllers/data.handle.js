@@ -1,6 +1,6 @@
 
 import validateToken from '../utils/token.utli';
-import {storeData} from '../utils/db.util';
+import {storeData, query} from '../utils/db.util';
 import {responseData} from '../utils/response.util';
 /**
  * Handles data functionality.
@@ -19,7 +19,7 @@ class DataController {
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(()=> {
-          storeData(data)
+          storeData(data, token)
               .then((data) => responseData(res, data)
               ).catch((err) =>{
                 console.log(err);
@@ -28,6 +28,17 @@ class DataController {
         .catch((err)=>{
           responseTokenError(res, err);
         });
+  }
+  /**
+ * @param {string} req The request.
+ * @param {string} res The response.
+ * @return {dict} Response.
+ */
+  static queryData(req, res) {
+    const token = req.headers['x-access-token'];
+    return validateToken(token)
+        .then(() => query(token)
+            .then((data) => responseData(res, data)));
   }
 }
 

@@ -12,7 +12,7 @@
 - The app should be able to return the weather casts for specified days by the users .
 -  The weather cast results should be represented by images.for example, sunny weather should be represented by an         image of the sun.
 - Users should be able to store the queried data for future use
-- Users should be to delete the stored data.
+- Users should be to delete the stored data  .
 ## Motivation
 
   Most weather apps provide forecast, users don't get a chance to look at the past weather patterns of a given a location. 

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "export NODE_ENV=test && export DATABASE_URL=mongodb://localhost/test_db && nyc mocha --compilers js:babel-core/register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "start": "node app/server.js",
+    "start": "node server.js",
     "build": "babel lib -d dist"
   },
   "repository": {

@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 
 
 const mongoose = require('mongoose');
-mongoose.connect(config.DBHost,
+mongoose.connect(process.env.DBHost,
     {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', function(err) {

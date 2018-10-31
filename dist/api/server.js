@@ -35,7 +35,7 @@ app.use(jsonParser());
 app.use(morgan('dev'));
 
 var mongoose = require('mongoose');
-mongoose.connect(_config2.default.DBHost, { useNewUrlParser: true });
+mongoose.connect(process.env.DBHost, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', function (err) {
   console.error('connection error: ', err);

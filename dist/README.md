@@ -19,3 +19,5 @@
 
   A world is currently experiencing global warming and its becoming hard to tell if for example the rainy seasons are shorter or its hotter.
   The app would provide weather patterns to farmers to aid them to know when to plant and harvest.It would help Green energy activists make a case for their cause with data.
+
+  

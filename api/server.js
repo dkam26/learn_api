@@ -10,7 +10,7 @@ const morgan = require('morgan');
 app.use(jsonParser());
 app.use(morgan('dev'));
 
-
+console.log(process.env);
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DBHost,
     {useNewUrlParser: true});

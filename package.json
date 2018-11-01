@@ -4,7 +4,7 @@
   "description": "Api for the U-learn platform",
   "main": "server.js",
   "scripts": {
-    "test": "export NODE_ENV=test && export DATABASE_URL=mongodb://localhost/test_db && nyc mocha --compilers js:babel-core/register --exit",
+    "test": "export NODE_ENV=test && export DBHost=mongodb://localhost/test_db && nyc mocha --compilers js:babel-core/register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && node dist/api/server.js",

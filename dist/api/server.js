@@ -34,6 +34,7 @@ var morgan = require('morgan');
 app.use(jsonParser());
 app.use(morgan('dev'));
 
+console.log(process.env);
 var mongoose = require('mongoose');
 mongoose.connect(process.env.DBHost, { useNewUrlParser: true });
 var db = mongoose.connection;

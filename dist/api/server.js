@@ -24,6 +24,10 @@ var _data = require('./routes/data.route');
 
 var _data2 = _interopRequireDefault(_data);
 
+var _cors = require('cors');
+
+var _cors2 = _interopRequireDefault(_cors);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -31,10 +35,11 @@ var app = (0, _express2.default)();
 var jsonParser = require('body-parser').json;
 var morgan = require('morgan');
 
+
 app.use(jsonParser());
 app.use(morgan('dev'));
 
-console.log(process.env);
+console.log(process.env.DBHost);
 var mongoose = require('mongoose');
 mongoose.connect(process.env.DBHost, { useNewUrlParser: true });
 var db = mongoose.connection;
@@ -50,7 +55,7 @@ if (_config2.default.util.getEnv('NODE_ENV') !== 'test') {
   app.use(morgan('combined'));
   // 'combined' outputs the Apache style LOGs
 }
-
+app.use((0, _cors2.default)());
 app.use('/ul', _user2.default);
 
 app.use('/ul', _data2.default);

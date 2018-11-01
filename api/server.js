@@ -6,11 +6,12 @@ import searchRoutes from './routes/search.route';
 import dataRoutes from './routes/data.route';
 const jsonParser = require('body-parser').json;
 const morgan = require('morgan');
+import cors from 'cors';
 
 app.use(jsonParser());
 app.use(morgan('dev'));
 
-console.log(process.env);
+console.log(process.env.DBHost);
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DBHost,
     {useNewUrlParser: true});
@@ -27,7 +28,7 @@ if (config.util.getEnv('NODE_ENV') !== 'test') {
   app.use(morgan('combined'));
 // 'combined' outputs the Apache style LOGs
 }
-
+app.use(cors());
 app.use('/ul', userRoutes);
 
 app.use('/ul', dataRoutes);

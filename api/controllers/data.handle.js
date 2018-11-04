@@ -13,9 +13,9 @@ class DataController {
  */
   static saveData(req, res) {
     const data = req.body;
-    const theDate = new Date(data['Date'] * 1000);
+    const theDate = new Date(data['date'] * 1000);
     const dateString = theDate.toGMTString();
-    data['Date'] = dateString;
+    data['date'] = dateString;
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(()=> {

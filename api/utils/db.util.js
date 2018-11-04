@@ -40,6 +40,7 @@ const storeData = (data, token) => {
         data['owner'] = user._id;
         const dataToSave = new Data(data);
         dataToSave.save();
+        console.log(dataToSave);
         return resolve({Message: 'Saved!'});
       });
     });

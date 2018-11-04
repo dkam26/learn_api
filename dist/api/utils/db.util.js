@@ -48,8 +48,10 @@ var storeData = function storeData(data, token) {
     _jsonwebtoken2.default.verify(token, 'super', function (err, decoded) {
       _user2.default.findOne({ '_id': decoded.id }, function (err, user) {
         data['owner'] = user._id;
+        console.log(data);
         var dataToSave = new _data2.default(data);
         dataToSave.save();
+        console.log(dataToSave);
         return resolve({ Message: 'Saved!' });
       });
     });

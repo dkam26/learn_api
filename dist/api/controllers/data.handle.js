@@ -36,9 +36,10 @@ var DataController = function () {
      */
     value: function saveData(req, res) {
       var data = req.body;
-      var theDate = new Date(data['Date'] * 1000);
+      var theDate = new Date(data['date'] * 1000);
       var dateString = theDate.toGMTString();
-      data['Date'] = dateString;
+      data['date'] = dateString;
+      console.log(data['date']);
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         (0, _db.storeData)(data, token).then(function (data) {

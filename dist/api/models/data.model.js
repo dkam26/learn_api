@@ -13,12 +13,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Schema = _mongoose2.default.Schema;
 
 var DataSchema = new Schema({
-  owner: { type: Schema.Types.ObjectId, ref: 'User' },
+
   weatherConditions: String,
   windSpeed: String,
   humidity: String,
+  date: String,
   location: String,
-  date: Date
+  owner: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 var Data = _mongoose2.default.model('Data', DataSchema);

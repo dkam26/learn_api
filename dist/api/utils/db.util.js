@@ -48,7 +48,6 @@ var storeData = function storeData(data, token) {
     _jsonwebtoken2.default.verify(token, 'super', function (err, decoded) {
       _user2.default.findOne({ '_id': decoded.id }, function (err, user) {
         data['owner'] = user._id;
-        console.log(data);
         var dataToSave = new _data2.default(data);
         dataToSave.save();
         console.log(dataToSave);
@@ -68,9 +67,21 @@ var query = function query(token) {
     });
   });
 };
+
+var deletedata = function deletedata(token, data) {
+  return new Promise(function (resolve, reject) {
+    _jsonwebtoken2.default.verify(token, 'super', function (err, decoded) {
+      _user2.default.findOne({ '_id': decoded.id }, function (err, user) {
+        _data2.default.find({ 'owner': user['_id'], '_id': data.id }).remove().exec();
+        return resolve({ 'Message': 'Data deleted !' });
+      });
+    });
+  });
+};
 module.exports = {
   createUser: createUser,
   authLogin: authLogin,
   storeData: storeData,
-  query: query
+  query: query,
+  deletedata: deletedata
 };

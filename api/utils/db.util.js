@@ -57,9 +57,21 @@ const query = (token) => {
     });
   });
 };
+
+const deletedata = (token, data) =>{
+  return new Promise((resolve, reject) =>{
+    jwt.verify(token, 'super', function(err, decoded) {
+      User.findOne({'_id': decoded.id}, (err, user) =>{
+        Data.find({'owner': user['_id'], '_id': data.id}).remove().exec();
+        return resolve({'Message': 'Data deleted !'});
+      });
+    });
+  });
+};
 module.exports = {
   createUser: createUser,
   authLogin: authLogin,
   storeData: storeData,
   query: query,
+  deletedata: deletedata,
 };

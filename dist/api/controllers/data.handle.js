@@ -39,7 +39,6 @@ var DataController = function () {
       var theDate = new Date(data['date'] * 1000);
       var dateString = theDate.toGMTString();
       data['date'] = dateString;
-      console.log(data['date']);
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         (0, _db.storeData)(data, token).then(function (data) {
@@ -63,6 +62,23 @@ var DataController = function () {
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         return (0, _db.query)(token).then(function (data) {
+          return (0, _response.responseData)(res, data);
+        });
+      });
+    }
+    /**
+    * @param {string} req The request.
+    * @param {string} res The response.
+    * @return {dict} Response.
+    */
+
+  }, {
+    key: 'deleteData',
+    value: function deleteData(req, res) {
+      var dataToDelete = req.body;
+      var token = req.headers['x-access-token'];
+      return (0, _token2.default)(token).then(function () {
+        return (0, _db.deletedata)(token, dataToDelete).then(function (data) {
           return (0, _response.responseData)(res, data);
         });
       });

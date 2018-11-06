@@ -1,6 +1,6 @@
 
 import validateToken from '../utils/token.utli';
-import {storeData, query} from '../utils/db.util';
+import {storeData, query, deletedata} from '../utils/db.util';
 import {responseData} from '../utils/response.util';
 /**
  * Handles data functionality.
@@ -38,6 +38,18 @@ class DataController {
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(() => query(token)
+            .then((data) => responseData(res, data)));
+  }
+  /**
+ * @param {string} req The request.
+ * @param {string} res The response.
+ * @return {dict} Response.
+ */
+  static deleteData(req, res) {
+    const dataToDelete = req.body;
+    const token = req.headers['x-access-token'];
+    return validateToken(token)
+        .then(() => deletedata(token, dataToDelete)
             .then((data) => responseData(res, data)));
   }
 }

@@ -51,6 +51,7 @@
   },
   "homepage": "https://github.com/dkam26/ul_api#readme",
   "devDependencies": {
+    "@angular-devkit/build-angular": "^0.10.4",
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",

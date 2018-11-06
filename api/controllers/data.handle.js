@@ -46,7 +46,7 @@ class DataController {
  * @return {dict} Response.
  */
   static deleteData(req, res) {
-    const dataToDelete = req.body;
+    const dataToDelete = req.params.id;
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(() => deletedata(token, dataToDelete)

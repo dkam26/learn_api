@@ -72,7 +72,7 @@ var deletedata = function deletedata(token, data) {
   return new Promise(function (resolve, reject) {
     _jsonwebtoken2.default.verify(token, 'super', function (err, decoded) {
       _user2.default.findOne({ '_id': decoded.id }, function (err, user) {
-        _data2.default.find({ 'owner': user['_id'], '_id': data.id }).remove().exec();
+        _data2.default.find({ 'owner': user['_id'], '_id': data }).remove().exec();
         return resolve({ 'Message': 'Data deleted !' });
       });
     });

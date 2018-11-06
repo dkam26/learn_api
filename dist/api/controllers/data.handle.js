@@ -75,7 +75,7 @@ var DataController = function () {
   }, {
     key: 'deleteData',
     value: function deleteData(req, res) {
-      var dataToDelete = req.body;
+      var dataToDelete = req.params.id;
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         return (0, _db.deletedata)(token, dataToDelete).then(function (data) {

@@ -62,7 +62,7 @@ const deletedata = (token, data) =>{
   return new Promise((resolve, reject) =>{
     jwt.verify(token, 'super', function(err, decoded) {
       User.findOne({'_id': decoded.id}, (err, user) =>{
-        Data.find({'owner': user['_id'], '_id': data.id}).remove().exec();
+        Data.find({'owner': user['_id'], '_id': data}).remove().exec();
         return resolve({'Message': 'Data deleted !'});
       });
     });

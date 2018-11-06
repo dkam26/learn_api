@@ -6,6 +6,6 @@ const router = new express.Router();
 router
     .post('/data', DataController.saveData)
     .get('/querydata', DataController.queryData)
-    .delete('/deletedata', DataController.deleteData);
+    .delete('/deletedata/:id', DataController.deleteData);
 
 export default router;

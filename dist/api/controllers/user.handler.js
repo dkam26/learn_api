@@ -38,10 +38,11 @@ var UserController = function () {
       var user = req.body;
       return (0, _validate2.default)('createUser', user).then(function () {
         return (0, _db.createUser)(user).then(function (username) {
-          (0, _response.responseCreate)(res, username);
+          var data = { Message: 'User successfully added!,' + username };
+          (0, _response.responseData)(res, data, 'Success');
         });
       }).catch(function (err) {
-        (0, _response.responseError)(res, err);
+        (0, _response.responseData)(res, err, 'Error');
       });
     }
     /**
@@ -56,9 +57,9 @@ var UserController = function () {
       var user = req.body;
       return (0, _validate2.default)('login', user).then(function () {
         return (0, _db.authLogin)(user).then(function (creditials) {
-          (0, _response.responseLogin)(res, creditials);
+          (0, _response.responseData)(res, creditials, 'Success');
         }).catch(function (err) {
-          (0, _response.responseLoginError)(res, err);
+          (0, _response.responseData)(res, err, 'Error');
         });
       });
     }

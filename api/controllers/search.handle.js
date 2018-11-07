@@ -3,9 +3,7 @@ import {searchLocation,
   getLocation,
   getWeather,
 } from '../utils/queryApi.util';
-import {responseCoordinates,
-  responseWeather,
-  responseTokenError} from '../utils/responseCoordinate.util';
+import {responseData} from '../utils/response.util';
 import validateToken from '../utils/token.utli';
 /**
  * Handles user functionality.
@@ -24,13 +22,13 @@ class SearchController {
           validateInput(location)
               .then(() => searchLocation(location['location'])
                   .then((data) => getLocation(data))
-                  .then((data) => responseCoordinates(res, data))
+                  .then((data) => responseData(res, data, 'Success'))
               ).catch((err) =>{
-                console.log(err);
+                responseData(res, err, 'Error');
               });
         })
         .catch((err)=>{
-          responseTokenError(res, err);
+          responseData(res, err, 'Error');
         });
   }
   /**
@@ -44,9 +42,9 @@ class SearchController {
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(getWeather(time, coordinates)
-            .then((data)=> responseWeather(res, data)))
+            .then((data)=> responseData(res, data, 'Success')))
         .catch((err)=>{
-          responseTokenError(res, err);
+          responseData(res, err, 'Error');
         });
   }
 }

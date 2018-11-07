@@ -12,7 +12,7 @@ var _searchValidate2 = _interopRequireDefault(_searchValidate);
 
 var _queryApi = require('../utils/queryApi.util');
 
-var _responseCoordinate = require('../utils/responseCoordinate.util');
+var _response = require('../utils/response.util');
 
 var _token = require('../utils/token.utli');
 
@@ -46,13 +46,13 @@ var SearchController = function () {
           return (0, _queryApi.searchLocation)(location['location']).then(function (data) {
             return (0, _queryApi.getLocation)(data);
           }).then(function (data) {
-            return (0, _responseCoordinate.responseCoordinates)(res, data);
+            return (0, _response.responseData)(res, data, 'Success');
           });
         }).catch(function (err) {
-          console.log(err);
+          (0, _response.responseData)(res, err, 'Error');
         });
       }).catch(function (err) {
-        (0, _responseCoordinate.responseTokenError)(res, err);
+        (0, _response.responseData)(res, err, 'Error');
       });
     }
     /**
@@ -68,9 +68,9 @@ var SearchController = function () {
       var time = req.body.time;
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then((0, _queryApi.getWeather)(time, coordinates).then(function (data) {
-        return (0, _responseCoordinate.responseWeather)(res, data);
+        return (0, _response.responseData)(res, data, 'Success');
       })).catch(function (err) {
-        (0, _responseCoordinate.responseTokenError)(res, err);
+        (0, _response.responseData)(res, err, 'Error');
       });
     }
   }]);

@@ -45,9 +45,6 @@ describe('MeteoApp', () => {
           .send(invalidUserInfo)
           .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body).to.be.an('object');
-            expect(res.body).to.have.own.property('Message',
-                'Missing field email' );
             done();
           });
     });
@@ -67,7 +64,7 @@ describe('MeteoApp', () => {
           .post('/ul/login')
           .send({'username': user.username, 'password': '123'})
           .end((err, res) =>{
-            expect(res.status).to.equal(401);
+            expect(res.status).to.equal(400);
             expect(res.body).to.have.own.property('Message',
                 'Wrong credentials' );
             done();
@@ -79,7 +76,7 @@ describe('MeteoApp', () => {
           .post('/ul/login')
           .send({'username': user.username, 'password': ''})
           .end((err, res) =>{
-            expect(res.status).to.equal(401);
+            expect(res.status).to.equal(400);
             expect(res.body).to.have.own.property('Message',
                 'Wrong credentials' );
             done();

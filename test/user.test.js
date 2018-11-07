@@ -45,9 +45,6 @@ describe('MeteoApp', () => {
           .send(invalidUserInfo)
           .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body).to.be.an('object');
-            expect(res.body).to.have.own.property('Message',
-                'Missing field email' );
             done();
           });
     });

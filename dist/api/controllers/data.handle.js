@@ -42,12 +42,13 @@ var DataController = function () {
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         (0, _db.storeData)(data, token).then(function (data) {
-          return (0, _response.responseData)(res, data);
+          return (0, _response.responseData)(res, data, 'Success');
         }).catch(function (err) {
+          (0, _response.responseData)(res, err, 'Error');
           console.log(err);
         });
       }).catch(function (err) {
-        responseTokenError(res, err);
+        (0, _response.responseData)(res, err, 'Error');
       });
     }
     /**
@@ -62,7 +63,7 @@ var DataController = function () {
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         return (0, _db.query)(token).then(function (data) {
-          return (0, _response.responseData)(res, data);
+          return (0, _response.responseData)(res, data, 'Success');
         });
       });
     }
@@ -79,7 +80,7 @@ var DataController = function () {
       var token = req.headers['x-access-token'];
       return (0, _token2.default)(token).then(function () {
         return (0, _db.deletedata)(token, dataToDelete).then(function (data) {
-          return (0, _response.responseData)(res, data);
+          return (0, _response.responseData)(res, data, 'Success');
         });
       });
     }

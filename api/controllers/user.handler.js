@@ -1,9 +1,6 @@
 import vadilateUser from '../utils/validate.util';
 import {createUser, authLogin} from '../utils/db.util';
-import {responseCreate,
-  responseError,
-  responseLogin,
-  responseLoginError} from '../utils/response.util';
+import {responseData} from '../utils/response.util';
 /**
  * Handles user functionality.
  */
@@ -18,10 +15,11 @@ class UserController {
     return vadilateUser('createUser', user)
         .then(() => createUser(user)
             .then((username) => {
-              responseCreate(res, username);
+              let data = {Message: `User successfully added!,${username}`};
+              responseData(res, data, 'Success');
             })
         ).catch((err) =>{
-          responseError(res, err);
+          responseData(res, err, 'Error');
         });
   }
   /**
@@ -34,10 +32,10 @@ class UserController {
     return vadilateUser('login', user)
         .then(()=> authLogin(user)
             .then((creditials) => {
-              responseLogin(res, creditials);
+              responseData(res, creditials, 'Success');
             })
             .catch((err) =>{
-              responseLoginError(res, err);
+              responseData(res, err, 'Error');
             }));
   }
 }

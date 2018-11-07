@@ -20,13 +20,14 @@ class DataController {
     return validateToken(token)
         .then(()=> {
           storeData(data, token)
-              .then((data) => responseData(res, data)
+              .then((data) => responseData(res, data, 'Success')
               ).catch((err) =>{
+                responseData(res, err, 'Error');
                 console.log(err);
               });
         })
         .catch((err)=>{
-          responseTokenError(res, err);
+          responseData(res, err, 'Error');
         });
   }
   /**
@@ -38,7 +39,7 @@ class DataController {
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(() => query(token)
-            .then((data) => responseData(res, data)));
+            .then((data) => responseData(res, data, 'Success')));
   }
   /**
  * @param {string} req The request.
@@ -50,7 +51,7 @@ class DataController {
     const token = req.headers['x-access-token'];
     return validateToken(token)
         .then(() => deletedata(token, dataToDelete)
-            .then((data) => responseData(res, data)));
+            .then((data) => responseData(res, data, 'Success')));
   }
 }
 
